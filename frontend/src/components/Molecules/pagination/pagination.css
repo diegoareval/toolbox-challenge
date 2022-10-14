@@ -1,0 +1,30 @@
+.form-select {
+    display:inline-block!important;
+    width: 30%!important;
+}
+
+
+@media (max-width: 360px) {
+
+
+}
+
+@media (min-width: 480px) {
+
+
+}
+
+@media (min-width: 640px) {
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 1024px) {
+
+}
+
+@media (min-width: 1200px) {
+}
