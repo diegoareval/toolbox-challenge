@@ -1,9 +1,12 @@
 import React, {useState,useEffect} from 'react';
 import {Table} from 'react-bootstrap';
-import {PaginationHead, PaginationFooter} from 'components/Molecules/pagination/Pagination';
-import './tables.css'
+import {PaginationFooter} from "../../Molecules/PaginationFooter";
+import TableHead from "../../Atoms/FileTableHead";
+import {PaginationHead} from "../../Molecules/pagination/Pagination";
+
 
 export const CustomTable = ({files}) => {
+    console.log(files)
     let listShowFilesByPages = [1,3,5];
     const [limitShowFiles,setLimitShowFiles] = useState(listShowFilesByPages[0]);
     const [page,setPage]=useState(1);
@@ -36,7 +39,7 @@ export const CustomTable = ({files}) => {
     },[page,limitShowFiles])
 
 
-    return (<>
+    return (<div>
             <PaginationHead
                 listShowFilesByPages={listShowFilesByPages}
                 handleLimitChange={handleChangeLimitShowFiles}
@@ -50,7 +53,7 @@ export const CustomTable = ({files}) => {
                 totalFiles={files.length}
                 handlePage={handleChangeCurrentPage}
             />
-    </>);
+    </div>);
 
 }
 
@@ -64,14 +67,7 @@ function renderTable (obj) {
     if (obj.length > 0){
         return(
             <Table striped bordered hover responsive>
-                <thead>
-                    <tr>
-                        <th>File Name</th>
-                        <th>Text</th>
-                        <th>Number</th>
-                        <th>Hex</th>
-                    </tr>
-                </thead>
+                <TableHead/>
                 <tbody>
                     {
                         obj.map((data) => (
@@ -92,19 +88,14 @@ function renderTable (obj) {
 
     return(
         <Table striped bordered hover responsive>
-            <thead>
-                <tr>
-                    <th>File Name</th>
-                    <th>Text</th>
-                    <th>Number</th>
-                    <th>Hex</th>
-                </tr>
-            </thead>
+           <TableHead/>
             <tbody>
                 <tr><td colspan="4" className="text-center">No existen coincidencias</td></tr>
             </tbody>
         </Table>
     )
 }
+
+
 
 
