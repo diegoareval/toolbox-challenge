@@ -13,7 +13,9 @@ if your use npm:
 ```bash
 npm install
 ```
+### Configure environment variables
 
+rename `.env.example` to `.env` and fill in the values or my sample
 
 ### Run the server dev mode
 
@@ -38,7 +40,8 @@ if your use npm:
 ```bash
 npm start
 ```
-
+## notes:
+implemente una arquitecura minimalista y pequeña, ya que el tipo de solucion es pequeña
 anexo:
 2. docker test: docker build -f Dockerfile -t server .
 3. execute: docker run -it -p 4001:3000 server

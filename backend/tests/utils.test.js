@@ -1,15 +1,15 @@
 var chai = require('chai');
+const filesInstance = require("../src/utils/axios.utils")
+const {generateObject, formattedData} = require('../src/utils/format.utils');
 
-const {callFiles, generateObject, formattedData} = require('../utils');
 
-
-describe('TESTING filesControllers.js', () => {
+describe('TESTING files.controllers.js', () => {
     describe('Connection external API', () => {
         it('Call list files', async() => {
-            const result = await callFiles("/files");
+            const result = await filesInstance.callFiles("/files");
         });
         it('Call file', async() => {
-            const result = await callFiles('file/test2.csv');
+            const result = await filesInstance.callFiles('file/test2.csv');
         });
     });
     describe('Convert csv to json', () => {

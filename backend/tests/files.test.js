@@ -1,6 +1,6 @@
 let chai = require("chai");
 let chaiHttp = require("chai-http");
-const server = require("../app");
+const server = require("../src/server");
 
 // assertion style
 chai.should();

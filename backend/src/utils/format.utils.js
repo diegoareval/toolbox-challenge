@@ -1,26 +1,3 @@
-const axios = require("axios");
-
-const instance = axios.create({
-    baseURL: "https://echo-serv.tbxnet.com/v1/secret/",
-    headers: {
-        'Authorization': 'Bearer aSuperSecretKey'
-    }
-});
-
-
-/**
- * Call list files external api
- * @returns Object
- * @param(resource: string)
- */
-const callFiles = (resource) => {
-    try {
-        return instance.get(resource).then( res => res.data);
-    } catch (error) {
-        throw new Error(error);
-    }
-
-}
 
 /**
  * Create object with key/values
@@ -66,5 +43,5 @@ function formattedData(data){
 }
 
 module.exports = {
-    instance, callFiles, generateObject, formattedData
+    generateObject, formattedData
 }
