@@ -9,6 +9,8 @@
 - **context:**   Manejo de informacion por medio de context api
 - **utils:**    Peticiones  API y otros procesos
 
+### Atomic arquitecture
+
 ### Install dependencies
 
 ```bash
