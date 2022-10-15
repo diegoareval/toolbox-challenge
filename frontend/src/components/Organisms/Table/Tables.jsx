@@ -3,20 +3,12 @@ import {Table} from 'react-bootstrap';
 import {PaginationHead, PaginationFooter} from 'components/Molecules/pagination/Pagination';
 import './tables.css'
 
-
-/**
- * Return component Table
- * @param {Array} files
- * @returns Component
- */
 export const CustomTable = ({files}) => {
-
     let listShowFilesByPages = [1,3,5];
-
     const [limitShowFiles,setLimitShowFiles] = useState(listShowFilesByPages[0]);
     const [page,setPage]=useState(1);
-    const [posStartArreFiles, setPosStartArreFiles] =useState(0);
-    const [posEndArreFiles, setPosEndArreFiles] =useState(limitShowFiles);
+    const [posStartArrayFiles, setPosStartArrayFiles] =useState(0);
+    const [posEndArrayFiles, setPosEndArrayFiles] =useState(limitShowFiles);
     const [listFiles,setListFiles] = useState(files)
 
     const handleChangeLimitShowFiles = (value) =>{
@@ -25,7 +17,7 @@ export const CustomTable = ({files}) => {
 
     //Filter files
     const handleChangeFilterFile = (fileName) =>{
-        if (fileName != ''){
+        if (fileName !== ''){
             setListFiles(
                 files.filter((file) => file.file.includes(fileName))
             )
@@ -39,8 +31,8 @@ export const CustomTable = ({files}) => {
     }
 
     useEffect(()=>{
-        setPosEndArreFiles(limitShowFiles*page);
-        setPosStartArreFiles((limitShowFiles*page)-limitShowFiles)
+        setPosEndArrayFiles(limitShowFiles*page);
+        setPosStartArrayFiles((limitShowFiles*page)-limitShowFiles)
     },[page,limitShowFiles])
 
 
@@ -51,7 +43,7 @@ export const CustomTable = ({files}) => {
                 handleChangeFilter={handleChangeFilterFile}
             />
 
-            {renderTable(listFiles.slice(posStartArreFiles,posEndArreFiles))}
+            {renderTable(listFiles.slice(posStartArrayFiles,posEndArrayFiles))}
 
             <PaginationFooter
                 limitShowFiles={limitShowFiles}
