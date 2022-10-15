@@ -1,9 +1,7 @@
-const createError = require('http-errors');
 const express = require('express');
 const cors = require('cors');
 const app = express();
 const indexRouter = require('./routes/index');
-
 
 app.use(cors());
 
@@ -13,8 +11,8 @@ app.use('/', indexRouter);
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+app.use(function(req,res){
+  res.status(404).json({message: "not found"});
 });
 
 // error handler
