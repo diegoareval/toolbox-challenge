@@ -1,6 +1,14 @@
-## WEB APP
+# Backend
+### **_DIRECTORIOS_**
+- **tests:**     pruebas unitarias
+- **src/config:** exponiendo las variables de entorno y las confs generales del proyecto
+- **src/controllers:**   todos los metodos del controlador y el manejo de la data a retornar al frontend
+- **src/routers:**  todos los endpoints de la api
+- **src/services:**    Todos los servicios de la aplicacion en este caso los metodos que conectan al origen de datos de
+- **src/utils:** todos los utilities o helpers metodos
 
-The frontend is a simple React application created with [Vitejs](https://vitejs.dev/) that is used to communicate with the backend.
+#### notes:
+implemente una arquitecura minimalista y pequeña, ya que el tipo de solucion es pequeña
 
 ### Install dependencies
 
@@ -40,9 +48,8 @@ if your use npm:
 ```bash
 npm start
 ```
-## notes:
-implemente una arquitecura minimalista y pequeña, ya que el tipo de solucion es pequeña
-anexo:
+
+#### anexo
 2. docker test: docker build -f Dockerfile -t server .
 3. execute: docker run -it -p 4001:3000 server
 

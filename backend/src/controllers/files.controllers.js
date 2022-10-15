@@ -37,16 +37,13 @@ async function GetFilesData(req, res){
  * @returns
  */
 async function GetFileList(req, res){
-
     try {
         //Get list files
        const listFiles = await fileService.getFileInformation("/files");
         return responseHandler(res, 200, listFiles)
-
     } catch (error) {
         return responseHandler(res, 500, {message: error.message})
     }
-
 }
 
 
