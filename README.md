@@ -8,6 +8,8 @@
 docker-compose up --build
 ```
 
+revisar tu aplicacion web corriendo en el navegador: `http://localhost:3000`.
+
 [Dev info Linkedin: Diego Arevalo](https://www.linkedin.com/in/diego2000avelar/)
 
 
