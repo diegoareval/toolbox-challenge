@@ -8,7 +8,7 @@ async function GetDataFiles(req, res){
         const listFiles = await callFiles("/files").then( response => response);
 
         //Initialization variable return
-        const arreObj = [];
+        const files = [];
 
         for (let file of listFiles.files) {
             //Get file content
@@ -20,14 +20,14 @@ async function GetDataFiles(req, res){
                     if (err.response.status === 404 || err.response.status === 500 )
                         return null;
 
-                    throw new Error(error);
+                    throw new Error(err);
                 })
 
             //Add element to return variable
             if (dataFile != null){
                 let convertToJson = formattedData(dataFile); //Convert file csv to json
                 if (convertToJson.length > 0){
-                    arreObj.push({
+                    files.push({
                         file:file,
                         lines:convertToJson
                     });
@@ -35,10 +35,10 @@ async function GetDataFiles(req, res){
             }
         }
 
-        res.status(200).send(arreObj);
+        res.status(200).json(files);
 
     } catch (error) {
-        return res.status(500).send({
+        return res.status(500).json({
             "status": error.response.status,
             "code": error.code,
             "message": error.message
@@ -59,10 +59,10 @@ async function GetListFiles(req, res){
     try {
         //Get list files
         const listFiles = await callFiles("/files").then( response => response);
-        res.send(listFiles);
+        res.status(200).json(listFiles);
 
     } catch (error) {
-        return res.send({
+        return res.status(500).json({
             "status": error.response.status,
             "code": error.code,
             "message": error.message
