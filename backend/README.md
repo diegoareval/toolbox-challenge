@@ -1,6 +1,6 @@
 # Backend
 ### **_DIRECTORIOS_**
-- **tests:**     pruebas unitarias
+- **/tests:**     pruebas unitarias
 - **src/config:** exponiendo las variables de entorno y las confs generales del proyecto
 - **src/controllers:**   todos los metodos del controlador y el manejo de la data a retornar al frontend
 - **src/routers:**  todos los endpoints de la api
