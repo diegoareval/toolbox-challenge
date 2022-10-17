@@ -1,27 +1,22 @@
-
-const {formattedData} = require("../utils/format.utils");
 const {responseHandler} = require("../utils/response.utils");
-const fileService = require("../services/files.service")
+const fileService = require("../services/files.service");
+const formatService = require("../services/format.service");
 
 async function GetFilesData(req, res){
     try {
-        //Get list files
+        // Get list files
         const listFiles = await fileService.getFileInformation("/files");
         //Initialization variable return
         const files = [];
         for (let file of listFiles.files) {
             //Get file content
             const dataFile = await fileService.getFileInformation(`/file/${file}`)
+
             //Add element to return variable
-            if (dataFile != null){
-                let convertToJson = formattedData(dataFile); //Convert file csv to json
-                if (convertToJson.length > 0){
-                    files.push({
-                        file:file,
-                        lines:convertToJson
-                    });
+                const fileList = formatService.convertToJson(dataFile, file);
+                if(fileList){
+                    files.push(fileList)
                 }
-            }
         }
         return responseHandler(res, 200, files)
     } catch (error) {

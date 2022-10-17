@@ -6,7 +6,6 @@ import {PaginationHead} from "../../Molecules/pagination/Pagination";
 
 
 export const CustomTable = ({files}) => {
-    console.log(files)
     let listShowFilesByPages = [1,3,5];
     const [limitShowFiles,setLimitShowFiles] = useState(listShowFilesByPages[0]);
     const [page,setPage]=useState(1);

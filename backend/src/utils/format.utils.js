@@ -6,11 +6,12 @@
  * @returns Object
  */
 const generateObject = (keys,values) =>{
-    let obj={};
-    for(let i=1; i <= keys.length-1; i++){
-        obj[keys[i]] = values[i];
-    }
-    return obj;
+    return keys.reduce((o, k, i) => ({...o, [k]: values[i]}), {});
+}
+
+
+const splitData = (data, definition)=> {
+    return data.split(definition);
 }
 
 /**
@@ -22,18 +23,17 @@ function formattedData(data){
     //Initialization variable return
     let dataJson=[];
 
-    let rows = data.split('\n'); //Separated by rows
+    let rows = splitData(data, '\n') //Separated by rows
 
-    let columnsHeaders = rows[0].split(','); //Separated by columns
+    let columnsHeaders = splitData(rows[0], ',') //Separated by columns
 
     for (let i = 1; i <= rows.length-1; i++){
 
-        let columnsFields = rows[i].split(','); //Separated by fields
-
+        let columnsFields = splitData(rows[i], ',') //Separated by fields
         //if columns equal fields, create object with key/values
         if (columnsHeaders.length === columnsFields.length ) {
             let obj = generateObject(columnsHeaders,columnsFields); //Create object with key/values
-            dataJson.push(obj); //Add new elemen to dataJson for return
+            dataJson.push(obj); //Add new element to dataJson for return
         }
 
     }
